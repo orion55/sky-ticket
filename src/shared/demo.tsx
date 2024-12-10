@@ -1,12 +1,16 @@
 import { Button } from '@/shared/ui/button.tsx';
-import { HStack } from '@chakra-ui/react';
+import { Box, HStack } from '@chakra-ui/react';
 
 const Demo = () => {
   return (
-    <HStack>
-      <Button onClick={() => console.log('Ok')}>Click me</Button>
-      <Button>Click me</Button>
-    </HStack>
+    <Box display='flex' alignItems='center' justifyContent='center' height='100vh'>
+      <HStack>
+        <Button onClick={() => console.log('Ok')}>Click me</Button>
+        <Button onClick={() => console.log('Perfectly')} bg='blue.500' color='white'>
+          Click
+        </Button>
+      </HStack>
+    </Box>
   );
 };
 
