@@ -1,50 +1,14 @@
-# React + TypeScript + Vite
+# Задание
+Нужно создать страницу выдачи билетов с фильтрами (как на макете ниже).
+Необходимо выполнить следующие задания:
+1. #### Рендер билетов (#task1)
+   Используйте React для того, чтобы отрисовать билеты с данными, сортированные по цене, из файла tickets.json
+2. ### Фильтрация билетов (#task2)
+   Фильтрация билетов в выдаче по количеству пересадок.
+   При выполнении задач должны быть соблюдены условия:
+   - Используйте JavaScript/TypeScript;
+   - Работоспособность в браузерах: IE 11, Chrome;
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Для удобства можно воспользоваться любыми вспомогательными библиотеками. Соответствие примерному макету на картинке и любые дополнительные функции приложения приветствуются.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+![img01.jpg](img01.jpg)
