@@ -1,3 +1,4 @@
+import 'modern-normalize/modern-normalize.css';
 import Demo from '@/shared/demo.tsx';
 
 function App() {
