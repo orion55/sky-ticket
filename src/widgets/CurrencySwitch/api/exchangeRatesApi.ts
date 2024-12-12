@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-const API_URL = 'http://apilayer.net/api/live';
+const API_URL = 'https://api.currencylayer.com/live';
 const API_KEY = '5033a482622f0a76e963ace66d4a262a';
 
 export const fetchExchangeRates = async () => {
