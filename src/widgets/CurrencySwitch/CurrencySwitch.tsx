@@ -11,6 +11,7 @@ export const CurrencySwitch = () => {
     queryKey: ['exchangeRates'],
     queryFn: fetchExchangeRates,
     staleTime: 1000 * 60 * 60 * 24, // 1 день (24 часа) в миллисекундах
+    retry: 1,
   });
 
   useEffect(() => {
