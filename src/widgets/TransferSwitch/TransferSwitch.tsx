@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Text, VStack } from '@chakra-ui/react';
 import { Checkbox } from '@/shared/ui/checkbox.tsx';
-import { TransferOption, useTransferStore } from '@/shared/stores/transferStore.ts';
+import { TransferOption, useTransferStore } from '@/shared/stores/useTransferStore.ts';
 import { CheckedChangeDetails } from '@zag-js/checkbox';
 
 const checkboxStyles = {

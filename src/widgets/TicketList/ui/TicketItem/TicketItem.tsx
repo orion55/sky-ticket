@@ -1,8 +1,8 @@
-import type { Ticket } from '@/shared/stores/ticketStore.ts';
+import type { Ticket } from '@/shared/stores/useTicketStore.ts';
 import { Box, Flex, Grid, Image, Text } from '@chakra-ui/react';
 import { getAirlineLogo } from './libs/airlineLogos.ts';
 import { Button } from '@/shared/ui/button.tsx';
-import { currencyStore } from '@/shared/stores/currencyStore.ts';
+import { useCurrencyStore } from '@/shared/stores/useCurrencyStore.ts';
 import { formatCurrency } from './libs/formatCurrency.ts';
 import { formatTransfer } from './libs/formatTransfer.ts';
 import { formatDate } from '@/widgets/TicketList/ui/TicketItem/libs/formatDate.ts';
@@ -14,7 +14,7 @@ interface TicketProps {
 
 export const TicketItem = (props: TicketProps) => {
   const { ticket } = props;
-  const { selectedCurrency } = currencyStore();
+  const { selectedCurrency } = useCurrencyStore();
 
   return (
     <Box

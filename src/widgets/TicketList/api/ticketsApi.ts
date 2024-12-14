@@ -1,5 +1,5 @@
 import ticketList from './tickets.json';
-import { Ticket } from '@/shared/stores/ticketStore.ts';
+import { Ticket } from '@/shared/stores/useTicketStore.ts';
 import { v4 as uuidv4 } from 'uuid';
 import { chain } from 'lodash';
 

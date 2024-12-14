@@ -1,18 +1,26 @@
 import { Box, Button, HStack, Text } from '@chakra-ui/react';
-import { Currency, currencyStore } from '@/shared/stores/currencyStore.ts';
+import { Currency, useCurrencyStore } from '@/shared/stores/useCurrencyStore.ts';
 import { useQuery } from '@tanstack/react-query';
 import { toaster } from '@/shared/ui/toaster.tsx';
 import { useEffect } from 'react';
 import { fetchExchangeRates } from './api/exchangeRatesApi.ts';
+import isEmpty from 'lodash/isEmpty';
 
 export const CurrencySwitch = () => {
-  const { selectedCurrency, setSelectedCurrency, currencies } = currencyStore();
-  const { error, isError } = useQuery({
+  const { selectedCurrency, setSelectedCurrency, currencies, setExchangeRates } =
+    useCurrencyStore();
+  const { data, error, isError, isSuccess } = useQuery({
     queryKey: ['exchangeRates'],
     queryFn: fetchExchangeRates,
     staleTime: 1000 * 60 * 60 * 24, // 1 день (24 часа) в миллисекундах
-    retry: 1,
+    retry: 3,
   });
+
+  useEffect(() => {
+    if (isSuccess && !isEmpty(data)) {
+      setExchangeRates(data);
+    }
+  }, [data, isSuccess, setExchangeRates]);
 
   useEffect(() => {
     if (isError) {

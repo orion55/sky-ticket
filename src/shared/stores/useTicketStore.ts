@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import { useTransferStore } from './useTransferStore.ts';
+import { useCurrencyStore } from './useCurrencyStore.ts';
 
 export type Ticket = {
   id: string;
@@ -22,13 +24,16 @@ type TicketsState = {
   applyFilters: () => void;
 };
 
-export const ticketsStore = create<TicketsState>((set) => ({
+export const useTicketsStore = create<TicketsState>((set, get) => ({
   tickets: [],
   filteredTickets: [],
   setTickets: (tickets) => set({ tickets }),
   applyFilters: () => {
-    set((state) => ({
-      filteredTickets: state.tickets,
-    }));
+    const { tickets } = get();
+
+    const convertedTickets = useCurrencyStore.getState().convertPrices(tickets);
+    const filteredTickets = useTransferStore.getState().filterTransfers(convertedTickets);
+
+    set({ filteredTickets });
   },
 }));
