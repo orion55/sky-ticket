@@ -4,6 +4,18 @@ import { Checkbox } from '@/shared/ui/checkbox.tsx';
 import { TransferOption, useTransferStore } from '@/shared/stores/transferStore.ts';
 import { CheckedChangeDetails } from '@zag-js/checkbox';
 
+const checkboxStyles = {
+  cursor: 'pointer',
+  _hover: {
+    bg: 'blue.100/50',
+  },
+  w: '100%',
+  p: 2,
+  pl: 5,
+  pr: 5,
+  colorPalette: 'blue',
+};
+
 export const TransferSwitch: React.FC = () => {
   const { transferOptions, selectedTransfers, setSelectedTransfers } = useTransferStore();
 
@@ -34,14 +46,8 @@ export const TransferSwitch: React.FC = () => {
         <Checkbox
           checked={isAllSelected}
           onCheckedChange={(details: CheckedChangeDetails) => handleAllChange(details)}
-          colorPalette='blue'
           variant='outline'
-          cursor='pointer'
-          _hover={{ bg: 'blue.100/50' }}
-          w='100%'
-          p={2}
-          pl={5}
-          pr={5}
+          {...checkboxStyles}
         >
           <Text color='gray.500'>Все</Text>
         </Checkbox>
@@ -50,14 +56,8 @@ export const TransferSwitch: React.FC = () => {
             key={option.value}
             checked={selectedTransfers.includes(option.value)}
             onCheckedChange={() => handleTransferChange(option.value)}
-            colorPalette='blue'
             variant='outline'
-            cursor='pointer'
-            w='100%'
-            p={2}
-            pl={5}
-            pr={5}
-            _hover={{ bg: 'blue.100/50' }}
+            {...checkboxStyles}
           >
             <Text color='gray.500'>{option.label}</Text>
           </Checkbox>

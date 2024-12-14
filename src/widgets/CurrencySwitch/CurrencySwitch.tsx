@@ -1,9 +1,9 @@
 import { Box, Button, HStack, Text } from '@chakra-ui/react';
 import { Currency, currencyStore } from '@/shared/stores/currencyStore.ts';
-import { fetchExchangeRates } from './api/exchangeRatesApi.ts';
 import { useQuery } from '@tanstack/react-query';
 import { toaster } from '@/shared/ui/toaster.tsx';
 import { useEffect } from 'react';
+import { fetchExchangeRates } from './api/exchangeRatesApi.ts';
 
 export const CurrencySwitch = () => {
   const { selectedCurrency, setSelectedCurrency, currencies } = currencyStore();
