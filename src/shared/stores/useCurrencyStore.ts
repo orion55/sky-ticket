@@ -1,25 +1,16 @@
 import { create } from 'zustand';
 import { Ticket } from '@/shared/stores/useTicketStore.ts';
 
-export type Currency = {
-  value: string;
-  sign: string;
-};
-
 type CurrencyState = {
-  selectedCurrency: Currency;
-  setSelectedCurrency: (currency: Currency) => void;
-  currencies: Currency[];
+  selectedCurrency: string;
+  setSelectedCurrency: (currency: string) => void;
+  currencies: string[];
   exchangeRates: Record<string, number>;
   setExchangeRates: (rates: Record<string, number>) => void;
   convertPrices: (tickets: Ticket[]) => Ticket[];
 };
 
-const currencies: Currency[] = [
-  { value: 'RUB', sign: '₽' },
-  { value: 'USD', sign: '$' },
-  { value: 'EUR', sign: '€' },
-];
+const currencies: string[] = ['RUB', 'USD', 'EUR'];
 
 export const useCurrencyStore = create<CurrencyState>((set, get) => ({
   selectedCurrency: currencies[0],
@@ -29,12 +20,12 @@ export const useCurrencyStore = create<CurrencyState>((set, get) => ({
   setExchangeRates: (rates) => set({ exchangeRates: rates }),
   convertPrices: (tickets) => {
     const { selectedCurrency, exchangeRates } = get();
-    if (selectedCurrency.value === 'RUB') {
+    if (selectedCurrency === 'RUB') {
       return tickets;
     }
-    const rate = exchangeRates[selectedCurrency.value];
+    const rate = exchangeRates[selectedCurrency];
     if (!rate) {
-      console.warn(`Не найден курс для валюты: ${selectedCurrency.value}`);
+      console.warn(`Не найден курс для валюты: ${selectedCurrency}`);
       return tickets;
     }
     return tickets.map((ticket) => ({

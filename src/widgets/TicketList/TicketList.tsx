@@ -9,6 +9,7 @@ import { TicketItem } from './ui/TicketItem';
 import { useTransferStore } from '@/shared/stores/useTransferStore.ts';
 import { useCurrencyStore } from '@/shared/stores/useCurrencyStore.ts';
 import { TicketDialog } from './ui/TicketDialog';
+import { AnimatePresence } from 'framer-motion';
 
 export const TicketList = () => {
   const { tickets, setTickets, applyFilters, filteredTickets } = useTicketsStore();
@@ -45,9 +46,11 @@ export const TicketList = () => {
 
   return (
     <>
-      {filteredTickets.map((ticket) => (
-        <TicketItem ticket={ticket} key={ticket.id} />
-      ))}
+      <AnimatePresence>
+        {filteredTickets.map((ticket) => (
+          <TicketItem ticket={ticket} key={ticket.id} />
+        ))}
+      </AnimatePresence>
       <TicketDialog />
     </>
   );

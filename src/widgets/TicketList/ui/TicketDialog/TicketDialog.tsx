@@ -74,7 +74,7 @@ export const TicketDialog = () => {
               label='Цена'
               value={
                 <Text color='gray.950' fontSize='sm' fontWeight='bold'>
-                  {formatCurrency(currentTicket.price, selectedCurrency.value)}
+                  {formatCurrency(currentTicket.price, selectedCurrency)}
                 </Text>
               }
             />

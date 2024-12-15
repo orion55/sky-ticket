@@ -6,5 +6,5 @@ import { chain } from 'lodash';
 export const getTickets = (): Ticket[] =>
   chain(ticketList.tickets)
     .map((ticket: Omit<Ticket, 'id'>) => ({ id: uuidv4(), ...ticket }))
-    .orderBy(['departure_date', 'departure_time'], ['asc', 'asc'])
+    .orderBy(['price'], ['desc'])
     .value();

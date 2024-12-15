@@ -8,10 +8,12 @@ import { FaPlane } from 'react-icons/fa';
 import { useDialogStore } from '@/shared/stores/useDialogStore.ts';
 import { formatTransfer } from '@/shared/libs/formatTransfer.ts';
 import { formatCurrency } from '@/shared/libs/formatCurrency.ts';
+import { motion } from 'framer-motion';
 
 interface TicketProps {
   ticket: Ticket;
 }
+const MotionBox = motion.create(Box);
 
 export const TicketItem = (props: TicketProps) => {
   const { ticket } = props;
@@ -25,7 +27,11 @@ export const TicketItem = (props: TicketProps) => {
   };
 
   return (
-    <Box
+    <MotionBox
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
       display='flex'
       justifyContent='center'
       alignItems='center'
@@ -63,7 +69,7 @@ export const TicketItem = (props: TicketProps) => {
           >
             <Text textStyle='md'>
               Купить <br />
-              за {formatCurrency(ticket.price, selectedCurrency.value)}
+              за {formatCurrency(ticket.price, selectedCurrency)}
             </Text>
           </Button>
         </Flex>
@@ -117,6 +123,6 @@ export const TicketItem = (props: TicketProps) => {
           </Box>
         </Flex>
       </Grid>
-    </Box>
+    </MotionBox>
   );
 };

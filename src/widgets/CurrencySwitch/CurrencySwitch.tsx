@@ -1,5 +1,5 @@
 import { Box, Button, HStack, Text } from '@chakra-ui/react';
-import { Currency, useCurrencyStore } from '@/shared/stores/useCurrencyStore.ts';
+import { useCurrencyStore } from '@/shared/stores/useCurrencyStore.ts';
 import { useQuery } from '@tanstack/react-query';
 import { toaster } from '@/shared/ui/toaster.tsx';
 import { useEffect } from 'react';
@@ -31,7 +31,7 @@ export const CurrencySwitch = () => {
     }
   }, [error, isError]);
 
-  const handleCurrencyChange = (value: Currency) => setSelectedCurrency(value);
+  const handleCurrencyChange = (value: string) => setSelectedCurrency(value);
 
   return (
     <Box paddingTop='20px' margin='0 auto'>
@@ -39,9 +39,9 @@ export const CurrencySwitch = () => {
         ВАЛЮТА
       </Text>
       <HStack gap={0}>
-        {currencies.map((currency: Currency, index: number) => (
+        {currencies.map((currency: string, index: number) => (
           <Button
-            key={currency.value}
+            key={currency}
             onClick={() => handleCurrencyChange(currency)}
             bg={selectedCurrency === currency ? 'blue.500' : 'white'}
             color={selectedCurrency === currency ? 'white' : 'blue.500'}
@@ -54,7 +54,7 @@ export const CurrencySwitch = () => {
             borderRightRadius={index === currencies.length - 1 ? 'md' : 'none'}
             borderColor={selectedCurrency === currency ? 'blue.500' : 'border.emphasized'}
           >
-            {currency.value}
+            {currency}
           </Button>
         ))}
       </HStack>
