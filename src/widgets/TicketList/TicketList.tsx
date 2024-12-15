@@ -8,6 +8,7 @@ import { Box } from '@chakra-ui/react';
 import { TicketItem } from './ui/TicketItem';
 import { useTransferStore } from '@/shared/stores/useTransferStore.ts';
 import { useCurrencyStore } from '@/shared/stores/useCurrencyStore.ts';
+import { TicketDialog } from './ui/TicketDialog';
 
 export const TicketList = () => {
   const { tickets, setTickets, applyFilters, filteredTickets } = useTicketsStore();
@@ -47,6 +48,7 @@ export const TicketList = () => {
       {filteredTickets.map((ticket) => (
         <TicketItem ticket={ticket} key={ticket.id} />
       ))}
+      <TicketDialog />
     </>
   );
 };

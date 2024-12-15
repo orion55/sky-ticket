@@ -1,12 +1,13 @@
-import type { Ticket } from '@/shared/stores/useTicketStore.ts';
+import { Ticket, useTicketsStore } from '@/shared/stores/useTicketStore.ts';
 import { Box, Flex, Grid, Image, Text } from '@chakra-ui/react';
 import { getAirlineLogo } from './libs/airlineLogos.ts';
 import { Button } from '@/shared/ui/button.tsx';
 import { useCurrencyStore } from '@/shared/stores/useCurrencyStore.ts';
-import { formatCurrency } from './libs/formatCurrency.ts';
-import { formatTransfer } from './libs/formatTransfer.ts';
 import { formatDate } from '@/widgets/TicketList/ui/TicketItem/libs/formatDate.ts';
 import { FaPlane } from 'react-icons/fa';
+import { useDialogStore } from '@/shared/stores/useDialogStore.ts';
+import { formatTransfer } from '@/shared/libs/formatTransfer.ts';
+import { formatCurrency } from '@/shared/libs/formatCurrency.ts';
 
 interface TicketProps {
   ticket: Ticket;
@@ -15,24 +16,34 @@ interface TicketProps {
 export const TicketItem = (props: TicketProps) => {
   const { ticket } = props;
   const { selectedCurrency } = useCurrencyStore();
+  const { openDialog } = useDialogStore();
+  const { setCurrentTicket } = useTicketsStore();
+
+  const handelClick = () => {
+    setCurrentTicket(ticket);
+    openDialog();
+  };
 
   return (
     <Box
       display='flex'
       justifyContent='center'
       alignItems='center'
-      width='100%'
+      width={['calc(95% - 10px)', 'calc(95% - 10px)', 'calc(95% - 20px)', '100%']}
       backgroundColor='white'
       shadow='sm'
       borderRadius='md'
     >
-      <Grid templateColumns='200px 1fr' width='100%'>
+      <Grid templateColumns={['1fr', '1fr', '150px 1fr', '200px 1fr']} width='100%'>
         <Flex
           direction='column'
           padding='20px'
-          borderRightWidth='1px'
+          borderRightWidth={['0', '0', '1px', '1px']}
           borderRightStyle='solid'
           borderRightColor='gray.300'
+          borderBottomWidth={['1px', '1px', '0', '0']}
+          borderBottomStyle='solid'
+          borderBottomColor='gray.300'
         >
           <Image
             src={getAirlineLogo(ticket.carrier)}
@@ -40,6 +51,7 @@ export const TicketItem = (props: TicketProps) => {
             w='200px'
             h='75px'
             fit='contain'
+            margin='0 auto'
           />
           <Button
             size='xl'
@@ -47,6 +59,7 @@ export const TicketItem = (props: TicketProps) => {
             color='white'
             _hover={{ bgColor: 'orange.500' }}
             shadow='sm'
+            onClick={handelClick}
           >
             <Text textStyle='md'>
               Купить <br />
@@ -56,10 +69,18 @@ export const TicketItem = (props: TicketProps) => {
         </Flex>
         <Flex direction='column' padding='20px' alignItems='flex-start' justifyContent='flex-start'>
           <Box width='100%'>
-            <Grid templateColumns='140px 1fr 140px' width='100%'>
+            <Grid
+              templateColumns={[
+                '120px 1fr 120px',
+                '120px 1fr 120px',
+                '140px 1fr 140px',
+                '140px 1fr 140px',
+              ]}
+              width='100%'
+            >
               <Text fontSize='5xl'>{ticket.departure_time}</Text>
               <Flex direction='column' alignItems='center' justifyContent='center' gap={2}>
-                <Text textTransform='uppercase' color='gray.400' fontSize='sm'>
+                <Text textTransform='uppercase' color='gray.400' fontSize='sm' textAlign='center'>
                   {formatTransfer(ticket.stops)}
                 </Text>
                 <Flex align='center' w='100%' position='relative'>

@@ -21,6 +21,8 @@ type TicketsState = {
   tickets: Ticket[];
   filteredTickets: Ticket[];
   setTickets: (products: Ticket[]) => void;
+  currentTicket: Ticket;
+  setCurrentTicket: (ticket: Ticket) => void;
   applyFilters: () => void;
 };
 
@@ -28,6 +30,8 @@ export const useTicketsStore = create<TicketsState>((set, get) => ({
   tickets: [],
   filteredTickets: [],
   setTickets: (tickets) => set({ tickets }),
+  currentTicket: {} as Ticket,
+  setCurrentTicket: (ticket) => set({ currentTicket: ticket }),
   applyFilters: () => {
     const { tickets } = get();
 

@@ -38,11 +38,11 @@ export const TransferSwitch: React.FC = () => {
   };
 
   return (
-    <Box width='100%' mb={5}>
+    <Box mb={5}>
       <Text fontSize='sm' fontWeight='bold' mb={4} color='gray.500' pl={5} pr={5}>
         КОЛИЧЕСТВО ПЕРЕСАДОК
       </Text>
-      <VStack align='start' gap={0} width='100%'>
+      <VStack align='start' gap={0}>
         <Checkbox
           checked={isAllSelected}
           onCheckedChange={(details: CheckedChangeDetails) => handleAllChange(details)}

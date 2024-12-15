@@ -34,7 +34,7 @@ export const CurrencySwitch = () => {
   const handleCurrencyChange = (value: Currency) => setSelectedCurrency(value);
 
   return (
-    <Box padding='20px 20px 0 20px '>
+    <Box paddingTop='20px' margin='0 auto'>
       <Text fontSize='sm' fontWeight='bold' mb={4} color='gray.500'>
         ВАЛЮТА
       </Text>

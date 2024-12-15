@@ -16,8 +16,9 @@ function App() {
         justifyContent='flex-start'
         alignItems='center'
         flexDirection='column'
-        padding='20px'
+        padding={['5px', '5px', '10px', '20px']}
         minHeight='100vh'
+        width='100%'
       >
         <Box
           paddingBottom='20px'
@@ -28,8 +29,13 @@ function App() {
         >
           <Logo />
         </Box>
-        <Grid gap='4' templateColumns='233px 1fr' width='1024px' margin='0 auto'>
-          <Box>
+        <Grid
+          gap='4'
+          templateColumns={['1fr', '1fr', '1fr', '233px 1fr']}
+          width={['100%', '100%', '100%', '1024px']}
+          margin='0 auto'
+        >
+          <Box width='100%'>
             <Box
               backgroundColor='white'
               shadow='sm'
@@ -39,6 +45,8 @@ function App() {
               alignItems='flex-start'
               flexDirection='column'
               gap={8}
+              width='223px'
+              margin='0 auto'
             >
               <CurrencySwitch />
               <TransferSwitch />
