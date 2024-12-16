@@ -39,8 +39,16 @@ export const TransferSwitch: React.FC = () => {
 
   return (
     <Box mb={5}>
-      <Text fontSize='sm' fontWeight='bold' mb={4} color='gray.500' pl={5} pr={5}>
-        КОЛИЧЕСТВО ПЕРЕСАДОК
+      <Text
+        fontSize='sm'
+        fontWeight='bold'
+        mb={4}
+        color='gray.500'
+        pl={5}
+        pr={5}
+        textTransform='uppercase'
+      >
+        Количество пересадок
       </Text>
       <VStack align='start' gap={0}>
         <Checkbox

@@ -35,8 +35,8 @@ export const CurrencySwitch = () => {
 
   return (
     <Box paddingTop='20px' margin='0 auto'>
-      <Text fontSize='sm' fontWeight='bold' mb={4} color='gray.500'>
-        ВАЛЮТА
+      <Text fontSize='sm' fontWeight='bold' mb={4} color='gray.500' textTransform='uppercase'>
+        Валюта
       </Text>
       <HStack gap={0}>
         {currencies.map((currency: string, index: number) => (
